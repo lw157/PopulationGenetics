@@ -33,11 +33,11 @@ def trio(infile,outfile):
         if (not re.match(r'NA',ls[3],re.M|re.I)) and re.match(r'NA',ls[4], re.M|re.I):
             conut_singleparents += 1
             
-            with open(infile,"r") as ff:
-        for j in map(string.strip,ff):
-            l = j.split()
-            if l[1] in trios:
-                out.write(j + "\n")
+        with open(infile,"r") as ff:
+            for j in map(string.strip,ff):
+                l = j.split()
+                if l[1] in trios:
+                    out.write(j + "\n")
 
     f.close()
     out.close()
