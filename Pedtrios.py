@@ -12,7 +12,7 @@ def trio(infile,outfile):
     trios = set()
     count_trios = 0
     count_singleparents = 0
-
+    count_total = 0
     for i in map(string.strip,f):
         ls = i.split()
 
@@ -30,6 +30,8 @@ def trio(infile,outfile):
         if (not re.match(r'NA',ls[3],re.M|re.I)) and re.match(r'NA',ls[4], re.M|re.I):
             count_singleparents += 1
 
+        count_total += 1
+
     with open(infile,"r") as ff:
         for j in map(string.strip,ff):
             l = j.split()
@@ -38,10 +40,13 @@ def trio(infile,outfile):
 
     f.close()
     out.close()
-
-    print "There are " + str(count_trios) + " trios in "
-    print "There are " + str(count_singleparents) + " single parents in "
     
+    print "There are " + str(count_total - 1) + " individuals in total."
+    print "There are " + str(count_trios) + " trios encompassing " + str(count_trios * 3) + " individuals."
+    print "There are " + str(count_singleparents) + " single parents encompassing " + str(count_singleparents * 2) + " indivduals."
+    print "There are " + str(count_trios + count_singleparents) + " nuclear families.\n"
+
+
     
 def usage():
     print 'This python script will count number of trios, parents\n'
@@ -83,4 +88,4 @@ if __name__ == "__main__":
     else:
         main(sys.argv[1:])
 
-        print "analysis is done\n"
+        print "Analysis is done\n"    
