@@ -49,7 +49,7 @@ def trio(infile,outfile):
 
     
 def usage():
-    print 'This python script will count number of trios, parents\n'
+    print 'This python script will count number of trios, parents. Input file is pedgree information from Plink map or Merlin ped file\n'
     print 'Usage: python Pedtrios.py -i <inputfile> -o <outputfile> \n'
     print 'Method: >>> count number of family member from plink Ped file'
     print '        >>> out put unique family in Plink Ped format \n'
