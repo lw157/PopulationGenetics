@@ -4,6 +4,8 @@
 
 import requests, sys
 import pandas as pd
+from joblib import Parallel, delayed
+import multiprocessing
 
 def get_genotype_ensembl(snp):
     server = "http://rest.ensembl.org"
@@ -32,10 +34,9 @@ def get_genotype_ensembl(snp):
 ## define a snp list
 snps = ["rs7566597","rs9883818","rs150230900","rs953897"]
 
-## fetch genotype for each SNP
-dout = []
-for i in snps:
-    dout.append(get_genotype_ensembl(i))
+## parrallel fetching genotype for each SNP
+num_cores = multiprocessing.cpu_count()
+dout = Parallel(n_jobs=num_cores)(delayed(get_genotype_ensembl)(i) for i in snps)
 
 ## merge genotype
 df_final = reduce(lambda left,right: pd.merge(left,right,on='sample', how="inner"), dout)
