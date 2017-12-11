@@ -1,4 +1,4 @@
 popgen
 ======
 
-Population genetics
+A repertoire for scripts of Population genetics
