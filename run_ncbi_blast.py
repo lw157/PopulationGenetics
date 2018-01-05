@@ -2,7 +2,7 @@
 # I have trouble to run NCBIWWW.qblast on my Mac OS high Sierra, but after I copy the original code above my code, it worked!
 # The input is fasta file, it output is a text, containing hit id and sequence and other infomation
 
-
+## Jeffrey's code for qblast and his copyright reserved
 #Copyright 1999 by Jeffrey Chang.  All rights reserved.
 # This code is part of the Biopython distribution and governed by its
 # license.  Please see the LICENSE file that should have been included
@@ -266,8 +266,7 @@ if __name__ == '__main__':
         sys.stdout.write("run program with command: python ncbi_blast.py infile.fasta outfile.seq.txt \n")
         sys.exit()
     sys.stdout.write("output was saved in xxx.blast.out.txt\n")
-    
-    
+     
     infile = sys.argv[1]
     recordseq = SeqIO.read(infile, format="fasta")
     result_handle = qblast(program="blastn", database ="nr", expect=0.01 ,  sequence = recordseq.format("fasta") ,format_type ="XML")
