@@ -293,6 +293,6 @@ if __name__ == '__main__':
                 #print "  Match: %s" % hsp.match
                 #print "  Sbjct: %s" % hsp.sbjct
                 
-                out.write(">" + str(align.title) + "[e=" + str(hsp.expect) + " , from postion " + str(hsp.query_start) + " to " + str(hsp.query_end)  + "\n" + str(hsp.sbjct) + "\n")
+                out.write(">" + str(align.title) + " [e=" + str(hsp.expect) + " , from postion " + str(hsp.query_start) + " to " + str(hsp.query_end)  + "]\n" + str(hsp.sbjct) + "\n")
     
     out.close()
