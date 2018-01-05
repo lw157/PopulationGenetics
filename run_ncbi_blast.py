@@ -1,5 +1,5 @@
 # run NCBI blast locally over the internet with python and biopython
-# I have trouble to run NCBIWWW.qblast on my Mac OS high Sierra, but after I copy the original code above my code, it worked!
+# I have trouble to run NCBIWWW.qblast on my Mac OS high Sierra, but after I copy the original code of qblast and put it above my code, it worked!
 # The input is fasta file, it output is a text, containing hit id and sequence and other infomation
 
 ## Jeffrey's code for qblast and his copyright reserved
