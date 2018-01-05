@@ -283,16 +283,14 @@ if __name__ == '__main__':
         out.write("QUERY:" + record.query + "\n")
         out.write("QUERY_seq:" + recordseq.format("fasta")+ "\n\n")
         out.write("=" * 60 + "NCBI Blast output" + "=" * 60 +  "\n")
-        
+
         for align in record.alignments :
-            #print " MATCH: %s..." % align.title[:70]
             #print " MATCH: %s..." % align.title
             for hsp in align.hsps :
                 #print " ##HSP, e=%f, from position %i to %i"  % (hsp.expect, hsp.query_start, hsp.query_end)
                 #print "  Query: %s" % hsp.query
                 #print "  Match: %s" % hsp.match
                 #print "  Sbjct: %s" % hsp.sbjct
-                
                 out.write(">" + str(align.title) + " [e=" + str(hsp.expect) + " , from postion " + str(hsp.query_start) + " to " + str(hsp.query_end)  + "]\n" + str(hsp.sbjct) + "\n")
     
     out.close()
