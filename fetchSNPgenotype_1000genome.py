@@ -1,5 +1,4 @@
-### modified scripts from somewhere
-### download genotype data for human 1000 genome project from ENSEMBL browser by rsID
+### a python script for downloading genotype data for human 1000 genome project from ENSEMBL browser by rsID
 ## 
 
 import requests, sys
