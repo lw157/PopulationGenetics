@@ -1,10 +1,11 @@
 ### a python script for downloading genotype data for human 1000 genome project from ENSEMBL browser by rsID
-## 
+## with python 2.7 version
 
 import requests, sys
 import pandas as pd
 from joblib import Parallel, delayed
 import multiprocessing
+from functools import reduce
 
 def get_genotype_ensembl(snp):
     server = "http://rest.ensembl.org"
