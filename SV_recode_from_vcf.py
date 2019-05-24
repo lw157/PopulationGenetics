@@ -1,5 +1,7 @@
 #! /usr/bin/python
 
+## under python 3.6
+
 import pandas as pd
 from tqdm import trange
 import sys, getopt
