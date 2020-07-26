@@ -11,7 +11,7 @@ snps = useMart(biomart="ENSEMBL_MART_SNP", host="grch37.ensembl.org", path="/bio
 
 res <- list()
 
-for ( i in 1:nrow(ncoord)){
+for ( i in 1:nrow(coord)){
   ens=getBM(attributes = c('refsnp_id','chr_name','chrom_start', 'chrom_end', 'allele_1'), filters = c('chr_name','start','end'),
             values = as.list(coords[i,]), mart = snps)
   res[[i]] = ens
