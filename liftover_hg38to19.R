@@ -9,7 +9,7 @@ chainfile = import.chain("hg38ToHg19.over.chain")
 
 #### load data
 gwas = fread("gwas.txt")
-hg38 = data.frame(chr= paste0("chr",gwas $chromosome), start = gwas$base_pair_location,
+hg38 = data.frame(chr= paste0("chr", gwas$chromosome), start = gwas$base_pair_location,
                   end = gwas$base_pair_location,snp=gwas$variant_id)
 
 hg38$chr = gsub("chr23", "chrX", hg38$chr)
