@@ -6,6 +6,8 @@
 #conda install -c bioconda perl-dbd-mysql
 
 ## single region
+## UCSC is 0-based coordinates, in the bed, start position = SNP's coordinate - 1, end position = SNP's coordinate.
+
 echo "chr1 1 1000000" | perl batchUCSC.pl -p snp
 
 ## batch 
