@@ -1,3 +1,5 @@
+## get heng li's batchUCSC.pl from following link:
+##http://lh3lh3.users.sourceforge.net/download/batchUCSC.pl
 
 
 #conda install -c bioconda perl-dbi
