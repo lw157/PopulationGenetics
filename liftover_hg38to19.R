@@ -4,6 +4,21 @@ library(rtracklayer)
 require(liftOver)
 require(data.table)
 
+path = system.file(package="liftOver", "extdata", "hg38ToHg19.over.chain")
+ch = import.chain(path)
+
+dat = fread("testdata.txt.gz")
+dat$chr= paste0("chr",dat$chromosome)
+dat[dat$chr == "chr23"]$chr <- "chrX"
+## make sure your chr is in "chr1" ... "chrX" format
+
+gr <- GRanges(seqnames=dat$chr, ranges=IRanges(start=dat$base_pair_location, end=dat$base_pair_location, strand="*"),
+              snp = dat$variant_id)
+res_lift <- as.data.frame(liftOver(gr, chain))
+
+
+
+##### Alternatively, with longer code
 ## download from UCSC golden path
 chainfile = import.chain("hg38ToHg19.over.chain")
 
@@ -23,3 +38,6 @@ misssnp = dim(hg38)[1] - dim(hg19slim)[1] ##
 misssnp ## double check missing SNPs
 
 finout_2hg19 = merge(gwas, hg19slim, by.x="variant_id", by.y="snp", all.x = TRUE)
+
+
+
