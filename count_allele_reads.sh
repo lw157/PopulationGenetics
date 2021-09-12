@@ -1,1 +1,1 @@
-
+gunzip -c IndividualVCFs_merge38_biallelic.vcf.gz | awk 'BEGIN { OFS="\t"; FS="\t"; } { if (index($0, "#") == 0) { print($1,$2-1,$2,$3,$6,$4,$5,$7,$8,$9); } }' | samtools mpileup -B -q 0 -Q 0 -s -l - -f Ind_STARmappingRNAseq_sortedByCoord.bam  > samtools_mpileup_singlesample.txt
