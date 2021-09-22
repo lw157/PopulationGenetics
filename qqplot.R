@@ -17,3 +17,22 @@ qqplot <- function(pval, ci = 0.95) {
     ylab(ylabels)
   return(p)
 }
+
+
+
+inflation_adj <- function(PVALUE = NULL){
+  
+  chisq<-qchisq((1 - PVALUE), 1)
+  lambda <- median(chisq)/qchisq(0.5,1)
+  chi_adj <-  chisq /lambda
+  padj<-pchisq(chi_adj, df=1,lower.tail=FALSE)
+  
+  return(list(p_raw = PVALUE, lambda = lambda, padj = padj ))
+ }
+
+'# example
+'# 
+'# p = data.table::fread("gwas.txt")
+'# p_adj = inflation_adj(PVALUE = p$PVALUE)
+'# qqplot(pval = padj$p_raw,ci = 0.95) ## qqplot for raw p values
+'# qqplot(pval = padj$p_adj, ci=0.95) # qq plot for adjusted p value
