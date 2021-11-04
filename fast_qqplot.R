@@ -26,9 +26,14 @@ qqplot <- function(pval, fast = FALSE, ci = 0.95) {
   p = ggplot(dat) +
     geom_point(aes(exp, obs), shape = 20, size = 3) +
     geom_abline(intercept = 0, slope = 1,color = "red", linetype="dashed") +
-    geom_ribbon(aes(x = exp, ymin = clow, ymax = cupp), fill = "lightblue", alpha=0.4) +
     xlab(xlabels) +
     ylab(ylabels)
+  
+  if(ci){
+    p <- p +
+      geom_ribbon(aes(x = exp, ymin = clow, ymax = cupp), fill = "lightblue", alpha=0.4)
+  } 
+  
   return(p)
 }
 
@@ -51,3 +56,9 @@ inflation_adjust <- function(PVALUE = NULL){
 '# p_adj = inflation_adjust(PVALUE = p$PVALUE)
 '# qqplot(pval = p_adj$p_raw, fast=T, ci = 0.95) ## qqplot for raw p values
 '# qqplot(pval = p_adj$p_adj, fast = T, ci = 0.95) # qq plot for adjusted p value
+'# 
+'# add lambda value to plots
+'#  tmp = lambda_adjust(PVALUE = p$p_raw)
+'# p = qqplot(p$p_raw,fast = F, ci = 0.95)
+'# myp <- myp +
+'#     annotate('text', x=1,y= 10, label= bquote(lambda ~ "=" ~ .(round(tmp$lambda,4)) ), cex=6)
