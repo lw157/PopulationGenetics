@@ -37,9 +37,7 @@ qqplot <- function(pval, fast = FALSE, ci = 0.95) {
   return(p)
 }
 
-
-
-inflation_adjust <- function(PVALUE = NULL){
+lambda_adjust <- function(PVALUE = NULL){
   ## calculate the inflation - lambda and correct the raw p values
   
   chisq<-qchisq((1 - PVALUE), 1)
@@ -53,12 +51,11 @@ inflation_adjust <- function(PVALUE = NULL){
 '# example
 '# 
 '# p = data.table::fread("gwas.txt")
-'# p_adj = inflation_adjust(PVALUE = p$PVALUE)
+'# p_adj = lambda_adjust(PVALUE = p$PVALUE)
 '# qqplot(pval = p_adj$p_raw, fast=T, ci = 0.95) ## qqplot for raw p values
 '# qqplot(pval = p_adj$p_adj, fast = T, ci = 0.95) # qq plot for adjusted p value
 '# 
 '# add lambda value to plots
-'#  tmp = lambda_adjust(PVALUE = p$p_raw)
-'# p = qqplot(p$p_raw,fast = F, ci = 0.95)
+'# p = qqplot(p_adj$p_raw,fast = F, ci = 0.95)
 '# myp <- myp +
-'#     annotate('text', x=1,y= 10, label= bquote(lambda ~ "=" ~ .(round(tmp$lambda,4)) ), cex=6)
+'#     annotate('text', x=1,y= 10, label= bquote(lambda ~ "=" ~ .(round(p_adj$lambda,4)) ), cex=6)
