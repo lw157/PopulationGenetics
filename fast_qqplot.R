@@ -40,8 +40,11 @@ qqplot <- function(pval, fast = FALSE, ci = 0.95) {
 lambda_adjust <- function(PVALUE = NULL){
   ## calculate the inflation - lambda and correct the raw p values
   
+  PVALUE = PVALUE[!(is.infinite(PVALUE) | is.na(PVALUE))]
+  
   chisq<-qchisq((1 - PVALUE), 1)
   lambda <- median(chisq)/qchisq(0.5,1)
+  
   chi_adj <-  chisq /lambda
   padj <- pchisq(chi_adj, df=1,lower.tail=FALSE)
   
